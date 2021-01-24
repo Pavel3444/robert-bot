@@ -1,0 +1,13 @@
+.UserAnswer{
+    text-align: left;
+    margin-left: 75px;
+    margin-top: 20px;
+    position: relative;
+}
+.UserAnswer h3{
+    margin-left: 5px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 300;
+    font-size: 11px;
+}

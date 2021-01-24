@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+  width: 720px;
+  max-width: 100%;
+  margin: 0 auto;
+
+}
+.App *{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+img{
+ max-width: 100%;
+}
+
+
+

@@ -1,0 +1,15 @@
+.UserChoice{
+    display: inline-block;
+    background: rgb(222, 69, 97);
+    border-radius: 5px ;
+    padding:10px 30px ;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+.UserChoice .timeAnswer{
+    position: absolute;
+    right: -40px;
+    margin-top: -10px;
+
+}

@@ -1,0 +1,25 @@
+.AdvisorQuestion{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.AdvisorQuestion .ava{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+}
+.AdvisorQuestion .triangle{
+    background: transparent;
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+    border-top: 10px solid transparent ;
+    border-right: 10px solid white;
+    position: absolute;
+    left: 65px;
+    bottom: 20px;
+    width: 0 ;
+    height:0;
+}

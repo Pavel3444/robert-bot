@@ -1,0 +1,35 @@
+.Header{
+border-bottom: 1px solid rgba(225, 225, 225, 0.4);
+    display: flex;
+    color: #fff;
+    text-align: left;
+    vertical-align: center;
+    justify-content: start;
+}
+.Header .Ava{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header h5{
+    font-size: 17px;
+    padding-left: 20px;
+}
+.Header h5 span{
+    font-weight: bold;
+    font-size: 26px;
+}
+.Header .sircle{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: #00feb4;
+    border-radius: 50%;
+}
+.Header p{
+    font-size: 16px;
+    padding-left: 20px;
+}
+.Header i{
+    margin: 0 7px;
+}

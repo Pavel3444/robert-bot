@@ -1,0 +1,10 @@
+.QuestionBlock {
+    padding: 20px 0;
+}
+
+
+.QuestionBlock .answer {
+    display: flex;
+    justify-content: flex-end;
+
+}
