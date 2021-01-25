@@ -5,6 +5,7 @@ import UserAnswer from "../../components/UserAnswer/UserAnsswer";
 import AdvisorQuestion from "../../components/AdvisorQuestion/AdvisorQuestion";
 import UserChoice from "../../components/UserСhoice/UserChoice";
 
+
 class QuestionBlock extends React.Component {
     constructor(props) {
         super(props);

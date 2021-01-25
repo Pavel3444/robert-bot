@@ -29,7 +29,7 @@ const UserAnswer = props => {
                 null
             }
 
-            <h3>choose {props.content.btnsType}</h3>
+            <h3> {props.content.btnsType}</h3>
 
             {
                 props.content.checkbox.length > 1

@@ -2,42 +2,13 @@ import './App.css';
 import React from "react";
 import Header from "./containers/Header/Header";
 import Dialog from "./containers/Dialog/Dialog";
+import blocksMap from './blocksMap';
 
 class App extends React.Component {
+
     state = {
         checkedList: [],
-        dialogBlocks: [
-            {
-                id: 1,
-                texts: ['huihui'],
-                btnsText: ['go to 2', 'go to 3'],
-                btnsValue: [1, 2,],
-                btnsType: 'an answer',
-                btnsSelection: '',
-                checkbox: [],
-                finished: false
-            },
-            {
-                id: 2,
-                texts: ['hui2', 'huihui2', 'huihuihui2'],
-                btnsText: ['go to 3'],
-                btnsValue: [2],
-                btnsType: 'at least one',
-                btnsSelection: '',
-                checkbox: ['hui-1', 'hui-2', 'hui-3', 'hui-4th'],
-                finished: false
-            },
-            {
-                id: 3,
-                texts: ['hui3', 'huihui3', 'huihuihui3'],
-                btnsText: ['go to 2', 'go to 3'],
-                btnsValue: [1, 2,],
-                btnsType: 'answer',
-                btnsSelection: '',
-                checkbox: [],
-                finished: false
-            },
-        ],
+        dialogBlocks:  blocksMap,
         pageMap: []
     }
 
@@ -109,6 +80,8 @@ class App extends React.Component {
             checkedList: resultArr
         })
     }
+
+
 
 
     componentDidMount() {
