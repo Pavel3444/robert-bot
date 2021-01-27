@@ -27,7 +27,7 @@ class QuestionBlock extends React.Component {
                 <AdvisorSays
                     key={`qNum-${value}`}
                     createQuestion={this.createQuestion}
-                    text={this.props.content.texts[value]}
+                    text={this.props.content.textQuestions[value]}
                     writeLoad={this.props.writeLoad}
                     writeCurrent={this.props.writeCurrent}
                     updateCurrentQ={this.updateCurrentQ}
@@ -38,14 +38,14 @@ class QuestionBlock extends React.Component {
 
     renderQuestions = () => {
         const arrFunc = [];
-        for (let i = 0; i < this.props.content.texts.length; i++) {
+        for (let i = 0; i < this.props.content.textQuestions.length; i++) {
             arrFunc.push(this.createQuestion(i))
         }
         return arrFunc;
     }
 
     renderAnswers = () => {
-        if (this.props.content.texts.length === this.state.currentQ) {
+        if (this.props.content.textQuestions.length === this.state.currentQ) {
             if (!this.props.content.finished) {
                 return (
                     <UserAnswer
@@ -74,10 +74,19 @@ class QuestionBlock extends React.Component {
         return (
             <div className={classes.QuestionBlock}>
 
-                <AdvisorQuestion
-                    renderQuestions={this.renderQuestions}
-                />
-                {this.renderAnswers()}
+                {this.props.content.textQuestions.length ?
+                    <AdvisorQuestion
+                        renderQuestions={this.renderQuestions}
+                    />
+                    :
+                    null
+                }
+
+                {   this.props.content.btns.length ?
+                    this.renderAnswers()
+                    :
+                    null
+                }
             </div>
         )
     }

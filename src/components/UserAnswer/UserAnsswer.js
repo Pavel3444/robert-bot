@@ -7,12 +7,13 @@ import CheckboxBlock from "../CheckboxBlock/CheckboxBlock";
 const UserAnswer = props => {
 
 
-    const renderAnswer = props.content.btnsText.map((btn, i) => {
+    const renderAnswer = props.content.btns.map((btn, i) => {
         return (
             <AnswerButton
                 key={`btns-${i}`}
-                id={props.content.btnsValue[i]}
-                text={props.content.btnsText[i]}
+                id={props.content.btns[i].valueTo}
+                text={props.content.btns[i].text}
+                handler={props.content.btns[i].handler}
                 click={props.nextStep}
             />
         )
@@ -32,8 +33,7 @@ const UserAnswer = props => {
             <h3> {props.content.btnsType}</h3>
 
             {
-                props.content.checkbox.length > 1
-                    ?
+                props.content.checkbox.length   ?
                     <CheckboxBlock
                         content={props.content}
                         checkedNext={props.checkedNext}

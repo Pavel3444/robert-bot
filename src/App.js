@@ -2,38 +2,62 @@ import './App.css';
 import React from "react";
 import Header from "./containers/Header/Header";
 import Dialog from "./containers/Dialog/Dialog";
-import blocksMap from './blocksMap';
 
 class App extends React.Component {
 
     state = {
         checkedList: [],
-        dialogBlocks:  blocksMap,
+        dialogBlocks:  [],
         pageMap: []
     }
 
+
+
+
     startDialog = () => {
-        const firstDialog = Object.assign(this.state.dialogBlocks[0]);
+        const dialogBlocks = JSON.parse(JSON.stringify(window.blockMap));
+        window.blockMap.forEach((element, num) => {
+            element.btns.forEach((el, i)=>{
+                dialogBlocks[num].btns[i].handler = el.handler
+            })
+            element.checkbox.forEach((elem, id)=>{
+                dialogBlocks[num].checkbox[id].handler = elem.handler
+            })
+        })
+        const firstDialog = Object.assign({}, dialogBlocks[0])
         const pageMap = [];
         pageMap.push(firstDialog);
         this.setState({
+            dialogBlocks,
             pageMap
         })
     }
 
-    nextStep = (value, selection) => {
-        const page = Object.values(Object.assign({}, this.state.pageMap))
-        const newElem = Object.assign({}, this.state.dialogBlocks[value]);
-        page.push(newElem);
-        page[this.state.pageMap.length - 1].finished = true;
-        page[this.state.pageMap.length - 1].btnsSelection = selection;
-        this.setState({
-            pageMap: page
+    rewriteState = ()=>{
+        const page =  JSON.parse(JSON.stringify( this.state.pageMap));
+        this.state.pageMap.map((element, num) => {
+            element.btns.forEach((el, i)=>{
+                page[num].btns[i].handler = el.handler
+            })
         })
+        return page
+    }
+
+    nextStep = (value, selection) => {
+        if (this.state.dialogBlocks[value]) {
+            const page = this.rewriteState();
+            const newElem = Object.assign({}, this.state.dialogBlocks[value]);
+            page.push(newElem);
+            page[this.state.pageMap.length - 1].finished = true;
+            page[this.state.pageMap.length - 1].btnsSelection = selection;
+            this.setState({
+                pageMap: page
+            })
+        }
     }
 
     backHandler = () => {
-        const page = Object.values(Object.assign({}, this.state.pageMap));
+        const page = this.rewriteState();
         const newElem = Object.assign({}, page[page.length - 2]);
         newElem.finished = false;
         page.push(newElem);
@@ -46,15 +70,17 @@ class App extends React.Component {
     }
 
     checkedNext = (value) => {
-        const page = Object.values(Object.assign({}, this.state.pageMap))
-        const newElem = Object.assign({}, this.state.dialogBlocks[value]);
-        page.push(newElem);
-        page[this.state.pageMap.length - 1].finished = true;
-        page[this.state.pageMap.length - 1].btnsSelection = this.state.checkedList.join(' ');
-        this.setState({
-            pageMap: page,
-            checkedList: []
-        })
+        if (this.state.dialogBlocks[value]){
+            const page = this.rewriteState();
+            const newElem = Object.assign({} ,this.state.dialogBlocks[value]);
+            page.push(newElem);
+            page[this.state.pageMap.length - 1].finished = true;
+            page[this.state.pageMap.length - 1].btnsSelection = this.state.checkedList.join(' ');
+            this.setState({
+                pageMap: page,
+                checkedList: []
+            })
+        }
     }
 
     checkedListUse = (value, added) => {
@@ -86,10 +112,10 @@ class App extends React.Component {
 
     componentDidMount() {
         this.startDialog();
+
     }
 
     render() {
-
         return (
             <div className="App">
                 <Header/>
@@ -103,6 +129,7 @@ class App extends React.Component {
                     checkedNext={this.checkedNext}
                     checkedListUse={this.checkedListUse}
                     checkedList={this.state.checkedList}
+
                 />
             </div>
         );

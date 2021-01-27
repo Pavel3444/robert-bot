@@ -7,12 +7,11 @@ import uncheck from './uncheck.png';
 const Checkbox = props => {
     const [Active, setActive] = React.useState(false);
     const clicked = () => {
-
         setActive(!Active)
         const value = props.text;
         const added = !Active;
-        props.checkedListUse(value, added)
-
+        props.checkedListUse(value, added);
+        if(props.handler) props.handler();
     }
 
         const cls = [

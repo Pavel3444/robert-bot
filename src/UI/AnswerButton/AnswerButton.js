@@ -5,11 +5,15 @@ const AnswerButton = props => {
         classes.AnswerButton,
         props.disabled? classes.disabled : null
     ]
+    const buttonClicked = () => {
+        if (props.handler) props.handler();
+        props.click(props.id, props.text);
+    }
 
     return(
         <button
             className={cls.join(' ')}
-            onClick={()=>props.click(props.id, props.text)}
+            onClick={buttonClicked}
             disabled={!!props.disabled}
         >
             {props.text}
