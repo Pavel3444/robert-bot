@@ -7,12 +7,12 @@ window.blockMap = [
             {
                 text: 'Yes',
                 valueTo: 1,
-                handler: ()=>console.log("yes")
+                handler: ()=>console.log('yes')
             },
             {
                 text: 'No',
                 valueTo: 1,
-                handler:  ()=>console.log("no")
+                handler:  ()=>true
             },
         ],
         checkbox: [],

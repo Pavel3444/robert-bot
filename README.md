@@ -2,69 +2,61 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+"react-scripts start" - запуск проекта.
 
-In the project directory, you can run:
+"react-scripts build" - сборка проекта.
 
-### `yarn start`
+карта вопросов-ответов находиться в папке 'public' в файле 'blockMaps',
+при сборке пректа в корневой папке, там же где и index.html.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Представляет из себя массив с обьектами,  каждый из которых описывает блок диалога,
+включающий вопросы и ответы (каждый элемент необязателен).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+приложение начинается  с запуска 1го блока.
 
-### `yarn test`
+список опций:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+'id' - порядковый номер блока, необходим, нумерация от 1.
 
-### `yarn build`
+'textQuestions' - массив строк, передаваемых через запятую, содержит вопросы задаваемые ботом(по строке на вопрос),
+количество произвольно, если они не нужны,  указать как значение пустой массив (textQuestions : []).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+'btnsType' - сопроводительный текст, который будет выведен над кнопками. допускается передача пустой строки или 'null'.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+'btnsSelection:' - значение должно быть пустой строкой, туда записывается значение выбранной кнопки,
+для дальнейшего вывода в диалоге 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+'finished' - значение должно быть  false, меняется само для вывода следующего блока
 
-### `yarn eject`
+'btns' - массив обьектов,  каждый из  которых описывает выводимую кнопку,  количество произвольно,  если они не нужны,  
+указать как значение пустой массив (btns: []).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  опции кнопок: 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+                 'text' - текст кнопки, должен быть строкой
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+                 'valueTo' - порядковый номер блока, который должен быть отрисован следующим при клике на эту кнопку   
+                 (НУМЕРАЦИЯ БЛОКОВ ИДЕТ ОТ 0)   если действие не требуется, допускается передача пустой строки или 'null'
+                    
+                 'handler:' -  функция,  выполняемая при нажатии кнопки. если не требуется, допускается передача пустой 
+                  строки или 'null'
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+'checkbox:' - массив обьектов, каждый из которых описывает выделяемый блок (чекбокс), количество произвольно, 
+если они не нужны,  указать как значение пустой массив (checkbox: []).
 
-## Learn More
+опции чекбоксов:    
+                    
+                    'text' - текст чекбокса, должен быть строкой
+                     'handler:' -  функция,  выполняемая при выделении чекбокса. если не требуется,
+                        допускается передача пустой   строки или 'null'            
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
